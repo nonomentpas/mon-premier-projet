@@ -1,5 +1,8 @@
-Pommes
 Bananes
-Oranges
+Carottes
+Courgettes
 Fraises
 Kiwis
+Oranges
+Pommes
+Tomates
