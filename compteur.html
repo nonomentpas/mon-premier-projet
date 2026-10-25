@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compteur</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      font-family: sans-serif;
+      background: #1a1025;
+    }
+    #nombre {
+      font-size: 8rem;
+      font-weight: bold;
+      background: linear-gradient(135deg, #ff4fa3, #8a2be2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    #nombre.saute {
+      animation: saute 0.3s ease;
+    }
+    @keyframes saute {
+      50% { transform: scale(1.3); }
+    }
+    button {
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      padding: 1rem 3rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ff4fa3, #8a2be2);
+      box-shadow: 0 0 20px rgba(255, 79, 163, 0.6);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(255, 79, 163, 0.9), 0 0 60px rgba(138, 43, 226, 0.6);
+    }
+    button:active {
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+<body>
+  <div id="nombre">0</div>
+  <button id="bouton">+1</button>
+
+  <script>
+    let compteur = 0;
+    const nombre = document.getElementById("nombre");
+    const bouton = document.getElementById("bouton");
+
+    bouton.addEventListener("click", function () {
+      compteur = compteur + 1;
+      nombre.textContent = compteur;
+
+      // Relance l'animation du nombre à chaque clic
+      nombre.classList.remove("saute");
+      void nombre.offsetWidth;
+      nombre.classList.add("saute");
+    });
+  </script>
+</body>
+</html>
